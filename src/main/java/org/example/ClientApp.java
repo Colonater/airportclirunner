@@ -1,14 +1,11 @@
 package org.example;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClients;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
 
-public class PostmanCLI {
+public class ClientApp {
     public static void main(String[] args) {
         try {
             HttpClient httpClient = HttpClients.createDefault();
@@ -30,6 +27,30 @@ public class PostmanCLI {
             System.out.println("Airports: " + airportsResponse);
             System.out.println("Aircraft: " + aircraftResponse);
             System.out.println("Passengers: " + passengersResponse);
+
+            // Create instances of City, Airport, Aircraft, and Passenger based on responses
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            List<City> cities = Arrays.asList(objectMapper.readValue(citiesResponse, City[].class));
+            List<Airport> airports = Arrays.asList(objectMapper.readValue(airportsResponse, Airport[].class));
+            List<Aircraft> aircraftList = Arrays.asList(objectMapper.readValue(aircraftResponse, Aircraft[].class));
+            List<Passenger> passengers = Arrays.asList(objectMapper.readValue(passengersResponse, Passenger[].class));
+
+            // Now you have relationships on the client side
+            City city1 = cities.get(0);
+            City city2 = cities.get(1);
+
+            Airport airport1 = airports.get(0);
+            Airport airport2 = airports.get(1);
+
+            Aircraft aircraft1 = aircraftList.get(0);
+            Aircraft aircraft2 = aircraftList.get(1);
+
+            Passenger passenger1 = passengers.get(0);
+            Passenger passenger2 = passengers.get(1);
+
+            System.out.println("Passenger1 is in " + passenger1.getCity().getName() + " and flies " + passenger1.getAircraft().getType());
+            System.out.println("Passenger2 is in " + passenger2.getCity().getName() + " and flies " + passenger2.getAircraft().getType());
 
         } catch (Exception e) {
             e.printStackTrace();
