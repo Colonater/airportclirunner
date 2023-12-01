@@ -1,3 +1,5 @@
+//to model info about different types of aircraft with a type
+
 package org.example;
 
 public class Aircraft {

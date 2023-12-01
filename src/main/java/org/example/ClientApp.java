@@ -4,6 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Arrays;
 import java.util.List;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.HttpResponse;
+import org.apache.http.impl.client.HttpClients;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class ClientApp {
     public static void main(String[] args) {
@@ -72,3 +78,4 @@ public class ClientApp {
         return result.toString();
     }
 }
+

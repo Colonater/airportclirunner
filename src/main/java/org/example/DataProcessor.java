@@ -1,3 +1,5 @@
+//process data from api responses
+
 package org.example;
 
 import java.util.ArrayList;

@@ -1,3 +1,7 @@
+// represents an aircraft with a type to model with associated citys
+
+
+
 package org.example;
 
 public class Airport {
