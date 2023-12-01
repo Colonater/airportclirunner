@@ -23,7 +23,7 @@ public class DataProcessor {
         for (Passenger passenger : passengers) {
             System.out.println(passenger.getName() + " is in " + passenger.getCity().getName() +
                     " and flies on " + passenger.getAircraft().getType() +
-                    " from " + passenger.getAircraft().getAirport().getCode());
+                    " from " + passenger.getAircraft().getAirport());
         }
     }
 

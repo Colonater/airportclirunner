@@ -13,6 +13,14 @@ public class Airport {
         this.city = city;
     }
 
+    // Add this method for deserialization from a String
+    public static Airport fromString(String airportString, City city) {
+        String[] parts = airportString.split(",");
+        String code = parts[0];
+        // Update this line to create an Airport instance using the constructor
+        return new Airport(code, city);
+    }
+
     public String getCode() {
         return code;
     }
@@ -20,4 +28,5 @@ public class Airport {
     public City getCity() {
         return city;
     }
+
 }
